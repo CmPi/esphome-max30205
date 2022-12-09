@@ -2,15 +2,6 @@
 
 #include "esphome.h"
 
-/*
-#include "esphome/core/component.h"
-#include "esphome/components/sensor/sensor.h"
-#include "esphome/components/i2c/i2c.h"
-*/
-
-// 0x4c addresse de base
-
-
 typedef enum{   	//For configuration registers
   SHUTDOWN,    		// shutdwon mode to reduce power consumption <3.5uA
   COMPARATOR,    	// Bit 0 = operate OS in comparator mode, 1= INTERRUPT MODE
@@ -27,7 +18,7 @@ typedef enum{   	//For configuration registers
  * @brief chip register definition
  */
 
-#define MAX30205_ADDRESS        0x4c  // my component
+#define MAX30205_ADDRESS        0x4c  // my MAX30205 component
 #define MAX30205_ADDRESS1       0x49  // 8bit address converted to 7bit
 #define MAX30205_ADDRESS2       0x48  // 8bit address converted to 7bit
 
@@ -39,7 +30,6 @@ typedef enum{   	//For configuration registers
 
 static const char *const TAG_MAX30205 = "max30205.sensor";
 
-/// This class implements support for the i2c-based BH1750 ambient light sensor.
 class myMax30205 : public sensor::Sensor, public PollingComponent, public i2c::I2CDevice
 {
 
